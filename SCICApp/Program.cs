@@ -1,4 +1,6 @@
 using Infrastructure.Data;
+using Infrastructure.Services.CategoryService;
+using Infrastructure.Services.LocationService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +17,8 @@ builder.Services.AddDbContext<DataContext>(configure =>
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ILocationService, LocationService>();
 
 
 var app = builder.Build();
