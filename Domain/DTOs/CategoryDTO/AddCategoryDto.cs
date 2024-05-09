@@ -1,7 +1,6 @@
-namespace Domain.Filters;
+namespace Domain.DTOs.CategoryDTO;
 
-
-public class CategoryFilter:PaginationFilter
+public class AddCategoryDto
 {
     public string Name { get; set; } = null!;
     public string Description { get; set; }=null!;

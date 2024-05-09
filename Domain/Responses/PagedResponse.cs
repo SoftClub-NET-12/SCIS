@@ -1,3 +1,4 @@
+
 using System.Net;
 
 namespace Domain.Responses;
@@ -31,3 +32,4 @@ public class PagedResponse<T>:Response<T>
     {
     }
 }
+

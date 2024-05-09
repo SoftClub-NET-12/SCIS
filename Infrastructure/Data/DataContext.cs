@@ -8,8 +8,9 @@ public class DataContext : DbContext
 {
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
+
     public DbSet<Category> Categories { get; set; } = null!;
-    public DbSet<Location> Locations { get; set; } = null!;
+    public DbSet<Location> Locations { get; set; }= null!;
     public DbSet<PriceHistory> PriceHistories { get; set; } = null!;
     public DbSet<Product> Products { get; set; } = null!;
     public DbSet<ProductSupplier> ProductSuppliers { get; set; } = null!;
@@ -24,5 +25,6 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
+
 
 }

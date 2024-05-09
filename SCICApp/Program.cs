@@ -1,40 +1,50 @@
 using Infrastructure.AutoMapper;
 using Infrastructure.Data;
 
+
+using Infrastructure.Data;
+using Infrastructure.Services.CategoryService;
+using Infrastructure.Services.LocationService;
+using Infrastructure.Services.PriceHistoryService;
+using Infrastructure.Services.ProductService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connection = builder.Configuration.GetConnectionString("Connection");
-builder.Services.AddDbContext<DataContext>(x => x.UseNpgsql(connection));
-
-// builder.Services.AddTransient<IC, CustomerService>();
-
 
 builder.Services.AddAutoMapper(typeof(MapperProfile));
 
+builder.Services.AddDbContext<DataContext>(configure =>
+{
+    configure.UseNpgsql(connectionString:
+        builder.Configuration.GetConnectionString("Connection")
+    );
+});
+
+
+
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ILocationService, LocationService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IPriceHistoryService, PriceHistoryService>();
+
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
-
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
 app.Run();
 
 

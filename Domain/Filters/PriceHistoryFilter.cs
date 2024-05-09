@@ -1,7 +1,5 @@
 namespace Domain.Filters;
 
-public class PriceHistoryFilter
+public class PriceHistoryFilter : PaginationFilter
 {
-     public DateTime ChangeDate { get; set; }
-     
 }
