@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,8 +6,8 @@ namespace Infrastructure.Data;
 
 public class DataContext : DbContext
 {
-
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+
 
     public DbSet<Category> Categories { get; set; } = null!;
     public DbSet<Location> Locations { get; set; }= null!;
@@ -19,7 +20,11 @@ public class DataContext : DbContext
     public DbSet<StockProduct> StockProducts { get; set; } = null!;
     public DbSet<Supplier> Suppliers { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-      =>  base.OnModelCreating(modelBuilder);
-    
+    {
+        base.OnModelCreating(modelBuilder);
+    }
+
+
 }

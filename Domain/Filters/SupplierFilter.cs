@@ -1,5 +1,7 @@
 namespace Domain.Filters;
 
-public class SupplierFilter
+public class SupplierFilter:PaginationFilter
 {
+   public string? Name { get; set; }
+   
 }
