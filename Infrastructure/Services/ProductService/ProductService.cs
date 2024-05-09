@@ -77,9 +77,11 @@ public class ProductService : IProductService
         {
             var existing = await _context.Products.AnyAsync(e => e.ProductId == updateProductDto.ProductId);
             if (!existing) return new Response<string>(HttpStatusCode.BadRequest, "Product not found!");
+            
             var mapped = _mapper.Map<Product>(updateProductDto);
             _context.Products.Update(mapped);
             await _context.SaveChangesAsync();
+            
             return new Response<string>("Updated successfully");
         }
         catch (Exception ex)

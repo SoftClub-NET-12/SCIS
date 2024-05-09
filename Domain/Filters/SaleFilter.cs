@@ -1,5 +1,6 @@
 namespace Domain.Filters;
 
-public class SaleFilter
+public class SaleFilter:PaginationFilter
 {
+
 }
