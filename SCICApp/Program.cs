@@ -1,4 +1,17 @@
+using Infrastructure.AutoMapper;
+using Infrastructure.Data;
+
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connection = builder.Configuration.GetConnectionString("Connection");
+builder.Services.AddDbContext<DataContext>(x => x.UseNpgsql(connection));
+
+// builder.Services.AddTransient<IC, CustomerService>();
+
+
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -23,3 +36,5 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
+
+
