@@ -55,6 +55,10 @@ namespace Infrastructure.Services.StockProductService // Updated namespace
                 return new Response<GetStockProductDto>(HttpStatusCode.InternalServerError, e.Message);
             }
         }
+        
+        
+        
+        
 
         public async Task<Response<string>> CreateStockProductAsync(AddStockProductDto stockProduct) // Updated method signature
         {
