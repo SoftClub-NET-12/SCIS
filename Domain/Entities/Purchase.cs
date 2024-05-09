@@ -6,7 +6,7 @@ public class Purchase
     public int ProductId { get; set; }   
     public int Quantity { get; set; }
     public decimal TotalAmount { get; set; }
-
+    public DateTime PurshaseDate { get; set; }
 
 
     public Product? Product { get; set; }

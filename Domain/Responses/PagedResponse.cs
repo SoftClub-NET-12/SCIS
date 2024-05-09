@@ -1,4 +1,3 @@
-///
 
 using System.Net;
 
@@ -34,4 +33,3 @@ public class PagedResponse<T>:Response<T>
     }
 }
 
-///

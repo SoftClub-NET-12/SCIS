@@ -1,5 +1,8 @@
 namespace Domain.Filters;
 
-public class PurchaseFilter
+
+public class PurchaseFilter : PaginationFilter
 {
+    public decimal TotalAmount { get; set; }
+
 }
