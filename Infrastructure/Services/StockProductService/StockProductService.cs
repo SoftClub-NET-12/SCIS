@@ -21,6 +21,10 @@ namespace Infrastructure.Services.StockProductService // Updated namespace
             _context = context;
         }
 
+
+
+
+
         public async Task<PagedResponse<List<GetStockProductDto>>> GetStockProductsAsync(StockProductFilter filter) // Updated method signature
         {
             try
