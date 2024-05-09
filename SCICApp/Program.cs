@@ -1,3 +1,7 @@
+using Infrastructure.AutoMapper;
+using Infrastructure.Data;
+
+
 using Infrastructure.Data;
 using Infrastructure.Services.CategoryService;
 using Infrastructure.Services.LocationService;
@@ -6,6 +10,9 @@ using Infrastructure.Services.ProductService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddAutoMapper(typeof(MapperProfile));
 
 builder.Services.AddDbContext<DataContext>(configure =>
 {
@@ -39,3 +46,5 @@ app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 app.Run();
+
+
