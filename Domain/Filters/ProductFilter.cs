@@ -1,5 +1,6 @@
 namespace Domain.Filters;
 
-public class ProductFilter
+public class ProductFilter : PaginationFilter
 {
+    public string? Name { get; set; }
 }

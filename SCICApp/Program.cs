@@ -1,6 +1,8 @@
 using Infrastructure.Data;
 using Infrastructure.Services.CategoryService;
 using Infrastructure.Services.LocationService;
+using Infrastructure.Services.PriceHistoryService;
+using Infrastructure.Services.ProductService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +21,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<ILocationService, LocationService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IPriceHistoryService, PriceHistoryService>();
 
 
 var app = builder.Build();
